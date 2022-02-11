@@ -10,9 +10,9 @@ Some examples can be found on the [project page](https://projects.vk6flab.com/pr
 
 ## Hardware
 
-The receive hardware is a [Raspberry Pi](https://www.raspberrypi.org/) connected to an [RTL SDR v3 dongle](https://www.rtl-sdr.com/rtl-sdr-blog-v-3-dongles-user-guide/) with a [Diamond X300N antenna](https://www.diamondantenna.net/x300na.html).
+The transmit hardware is a Yaesu FT-857d connected to a dummy load, using 5 Watts FM.
 
-The transmit hardware is a Yaesu FT-857d connected to a dummy load.
+The receive hardware is a [Raspberry Pi](https://www.raspberrypi.org/) connected to an [RTL SDR v3 dongle](https://www.rtl-sdr.com/rtl-sdr-blog-v-3-dongles-user-guide/) with a telecopic rabbit ear antenna (that came with the dongle).
 
 ## Alternative Hardware
 
