@@ -4,15 +4,15 @@
 
 To measure the audio response of your transmitter, you can generate an audio file, transmit it, receive it, record it and compare the spectrograms between the original and the recorded audio. Adjusting filters, equalisers, gain and other transceiver settings will result in the spectrogram changing.
 
-Note that I'm using a Raspberry Pi, an RTLSDR dongle, an antenna, a Yaesu FT-857d and a dummy load. This is **NOT** required. See below for details.
+Note that I'm using a Raspberry Pi, an RTLSDR dongle, an antenna, a Yaesu FT-857d and a dummy load. This is **NOT** required. See below for alternative hardware details.
 
-Some examples can be found on the [project page](https://projects.vk6flab.com/projects/rtl-sdr-projects/frequency-response).
+Some example spectrograms can be found on the [project page](https://projects.vk6flab.com/projects/rtl-sdr-projects/frequency-response).
 
 ## Hardware
 
 The transmit hardware is a Yaesu FT-857d connected to a dummy load, using 5 Watts FM.
 
-The receive hardware is a [Raspberry Pi](https://www.raspberrypi.org/) connected to an [RTL SDR v3 dongle](https://www.rtl-sdr.com/rtl-sdr-blog-v-3-dongles-user-guide/) with a telecopic rabbit ear antenna (that came with the dongle).
+The receive hardware is a [Raspberry Pi](https://www.raspberrypi.org/) connected to an [RTL SDR v3 dongle](https://www.rtl-sdr.com/rtl-sdr-blog-v-3-dongles-user-guide/) with a telescopic rabbit ear antenna (that came with the dongle).
 
 ## Alternative Hardware
 
@@ -22,9 +22,9 @@ You can even use simpler tools than that. For example, you can play the audio fi
 
 ## Software
 
-This collection of tools relies heavily on [SoX](http://sox.sourceforge.net/) which is a cross-platform (Windows, Linux, MacOS X, etc.) command line utility that can convert various formats of computer audio files in to other formats. It also has the ability to generate spectrograms.
+This collection of [bash](https://tiswww.case.edu/php/chet/bash/bashtop.html) scripts relies heavily on [SoX](http://sox.sourceforge.net/) which is a cross-platform (Windows, Linux, MacOS X, etc.) command line utility that can convert various formats of computer audio files in to other formats. It also has the ability to generate spectrograms.
 
-The audio is received by a dongle using [rtl_fm](http://kmkeen.com/rtl-demod-guide/).
+The audio is received by a dongle using [rtl_fm](http://kmkeen.com/rtl-demod-guide/), but any tool that generates a [WAV](https://en.wikipedia.org/wiki/WAV) file will suffice.
 
 ## Usage
 
@@ -41,7 +41,8 @@ The audio is received by a dongle using [rtl_fm](http://kmkeen.com/rtl-demod-gui
 
 ## Prerequisites
 
-- sox
+- bash
+- SoX
 - rtl_fm (optional)
 
 ## Author
