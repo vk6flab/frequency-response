@@ -1,0 +1,18 @@
+#!/bin/bash
+# (C) 2022 - Onno VK6FLAB <cq@vk6flab.com>
+
+# Output a spectrogram for each supplied filename
+
+for this_file in "$@"
+do
+	output_file=$(basename "${this_file}" .wav)
+	if [ ! -f "${output_file}.wav" ]
+	then
+		continue
+	fi
+
+	if [ ! -f "${output_file}.png" ]
+	then
+		sox "${this_file}" -n spectrogram -o "${output_file}.png"
+	fi
+done

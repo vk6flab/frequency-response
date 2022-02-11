@@ -1,0 +1,41 @@
+#!/bin/bash
+# (C) 2022 - Onno VK6FLAB <cq@vk6flab.com>
+
+# Fair warning, the squelch and silence detection is very fragile. Squelch off
+# is 0, which will result in a single massive file until you kill the process.
+# Squelch too high and it won't record anything.
+
+# Sox silence detection is a balance between duration (0.3) and volume (1%). If
+# you're getting lots of little files, start with the squelch setting, not the
+# silence detection.
+
+# The initial frequency is a local repeater, but if you're going to transmit,
+# you should look for a simplex FM frequency on your bandplan.
+
+# Defaults to VK6RLM
+freq="${1:-146.750M}"
+
+# Defaults to 55
+squelch="${2:-55}"
+
+# Gain was derived after experimentation.
+gain=14.4
+
+# Audio sample rate
+samplerate=24k
+
+# What volume level is silence
+silence_level=1%
+
+# How long is it until we detect silence
+silence_duration=0.3
+
+# Here's where you store your audio files:
+audio_dir="/home/pi/audio"
+stamp=$(date +%Y-%m-%d_%H:%M:%S)
+audio_file="${audio_dir}/Radio_Recording_${freq}_${stamp}..wav"
+
+mkdir -p "${audio_dir}"
+
+# Run rtl_fm, mute silence, output raw audio, decode it with sox, detect silence and create a new audio file
+rtl_fm -f ${freq} -M fm -s ${samplerate} -l ${squelch} -g ${gain} | sox -t raw -r ${samplerate} -e signed -b 16 -c 1 -V1 - "${audio_file}" silence 1 ${silence_duration} ${silence_level} 1 ${silence_duration} ${silence_level} : newfile : restart

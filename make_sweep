@@ -1,0 +1,21 @@
+#!/bin/bash
+# (C) 2022 - Onno VK6FLAB <cq@vk6flab.com>
+
+# This tool generates three sets of three files. A WAV file with audio, a bin
+# file, which is intended to be used by csdr for decoding and a png file, showing
+# the spectrogram of the audio file.
+
+# Generate a single sweep audio file using 0 to 5 kHz
+sox -D -G -V -r 48000 -n -c 1 -b 16 -t raw sweep.48k.bin synth 5 sin 0+5000
+sox -D -G -V -r 48000 -n -c 1 -b 16 sweep.48k.wav synth 5 sin 0+5000
+sox sweep.48k.wav -n spectrogram -o sweep.48k.png
+
+# Generate a double sweep audio file using 0 to 5 kHz
+sox -D -G -V -r 48000 -n -c 1 -b 16 -t raw double-sweep.48k.bin synth 5 sin 0+5000 sin 5000+0 remix 1,2 channels 2
+sox -D -G -V -r 48000 -n -c 1 -b 16 double-sweep.48k.wav synth 5 sin 0+5000 sin 5000+0 remix 1,2 channels 2
+sox double-sweep.48k.wav -n spectrogram -o double-sweep.48k.png
+
+# Generate a double sweep audio file using 0 to 15 kHz
+sox -D -G -V -r 48000 -n -c 1 -b 16 -t raw fm.double-sweep.48k.bin synth 5 sin 0+15000 sin 15000+0 remix 1,2 channels 2
+sox -D -G -V -r 48000 -n -c 1 -b 16 fm.double-sweep.48k.wav synth 5 sin 0+15000 sin 15000+0 remix 1,2 channels 2
+sox fm.double-sweep.48k.wav -n spectrogram -o fm.double-sweep.48k.png
