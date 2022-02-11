@@ -6,6 +6,8 @@ To measure the audio response of your transmitter, you can generate an audio fil
 
 Note that I'm using a Raspberry Pi, an RTLSDR dongle, an antenna, a Yaesu FT-857d and a dummy load. This is **NOT** required. See below for details.
 
+Some examples can be found on the [project page](https://sites.google.com/view/vk6flab-projects/projects/rtl-sdr-projects/frequency-response).
+
 ## Hardware
 
 The receive hardware is a [Raspberry Pi](https://www.raspberrypi.org/) connected to an [RTL SDR v3 dongle](https://www.rtl-sdr.com/rtl-sdr-blog-v-3-dongles-user-guide/) with a [Diamond X300N antenna](https://www.diamondantenna.net/x300na.html).
@@ -16,7 +18,7 @@ The transmit hardware is a Yaesu FT-857d connected to a dummy load.
 
 This project will work just as well using alternative hardware. Although I'm using the specified hardware, the aim is to get an audio file to play on a transmitter and to record it off air from a receiver. If you have digital modes like FT8 or WSPR working, you're most of the way there.
 
-You can even use simpler tools than that. For example, you can play the audio file with your mobile phone into the microphone of your radio and record it off air with your computer.
+You can even use simpler tools than that. For example, you can play the audio file with your mobile phone into the microphone of your radio and record it off air with your computer, or a handheld recorder.
 
 ## Software
 
