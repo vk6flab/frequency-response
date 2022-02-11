@@ -6,7 +6,7 @@ To measure the audio response of your transmitter, you can generate an audio fil
 
 Note that I'm using a Raspberry Pi, an RTLSDR dongle, an antenna, a Yaesu FT-857d and a dummy load. This is **NOT** required. See below for details.
 
-Some examples can be found on the [project page](https://sites.google.com/view/vk6flab-projects/projects/rtl-sdr-projects/frequency-response).
+Some examples can be found on the [project page](https://projects.vk6flab.com/projects/rtl-sdr-projects/frequency-response).
 
 ## Hardware
 
