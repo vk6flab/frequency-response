@@ -1,0 +1,24 @@
+#!/bin/bash
+# (C) 2022 - Onno VK6FLAB <cq@vk6flab.com>
+
+# Record audio from the sound card which is connected to an analogue radio with
+# automatic squelch. Store the audio in a directory and process it elsewhere.
+
+# Audio sample rate
+samplerate=48k
+
+# What volume level is silence
+silence_level=1%
+
+# How long is it until we detect silence
+silence_duration=0.3
+
+# Here's where you store your audio files:
+audio_dir="/home/pi/audio"
+stamp=$(date +%Y-%m-%d_%H:%M:%S)
+audio_file="${audio_dir}/Radio_Recording_${stamp}..wav"
+
+mkdir -p "${audio_dir}"
+
+# Record audio from the sound card, silence comes from the radio squelch, pipe it to sox, detect silence and create a new audio file
+rec -c 1 -r ${samplerate} -b 16 -e signed -p | sox -p -c 1 "${audio_file}" silence 1 ${silence_duration} ${silence_level} 1 ${silence_duration} ${silence_level} : newfile : restart
