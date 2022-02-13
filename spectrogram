@@ -5,14 +5,18 @@
 
 for this_file in "$@"
 do
+	output_dir=$(dirname "${this_file}")
 	output_file=$(basename "${this_file}" .wav)
-	if [ ! -f "${output_file}.wav" ]
+
+	if [ ! -s "${output_dir}/${output_file}.wav" ]
 	then
 		continue
 	fi
 
-	if [ ! -f "${output_file}.png" ]
+	if [ ! -f "${output_dir}/${output_file}.png" ]
 	then
-		sox "${this_file}" -n spectrogram -o "${output_file}.png"
+		title=$(date -r "${this_file}" "+Spectrogram of transmission ending on %Y-%m-%d at %H:%M:%S")
+		credit="Credits: SoX, VK6FLAB"
+		sox "${this_file}" -n spectrogram -t "${title}" -c "${credit}" -o "${output_dir}/${output_file}.png"
 	fi
 done
