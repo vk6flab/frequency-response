@@ -21,4 +21,4 @@ audio_file="${audio_dir}/Radio_Recording_${stamp}..wav"
 mkdir -p "${audio_dir}"
 
 # Record audio from the sound card, silence comes from the radio squelch, pipe it to sox, detect silence and create a new audio file
-rec -c 1 -r ${samplerate} -b 16 -e signed -p | sox -p -c 1 "${audio_file}" silence 1 ${silence_duration} ${silence_level} 1 ${silence_duration} ${silence_level} : newfile : restart
+rec -q -c 1 -r ${samplerate} -p | sox -q -p -c 1 "${audio_file}" silence 1 ${silence_duration} ${silence_level} 1 ${silence_duration} ${silence_level} : newfile : restart
