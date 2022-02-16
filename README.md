@@ -47,17 +47,17 @@ The audio is received by a dongle using [rtl_fm](http://kmkeen.com/rtl-demod-gui
 
 ## Examples
 
-| [Single frequency sweep, 0 to 5 kHz, 5 seconds.](examples/sweep.48k.png) |
+| ![Single frequency sweep, 0 to 5 kHz, 5 seconds.](examples/sweep.48k.png) |
 |:--:|
-| [Single frequency sweep, 0 to 5 kHz, 5 seconds.](examples/sweep.48k.wav) |
+| [Single frequency sweep, 0 to 5 kHz, 5 seconds.](examples/sweep.48k.wav?raw=true) |
 
-| [Double frequency sweep, 0 to 5 kHz, 5 seconds.](examples/double-sweep.48k.png) |
+| ![Double frequency sweep, 0 to 5 kHz, 5 seconds.](examples/double-sweep.48k.png) |
 |:--:|
-| [Double frequency sweep, 0 to 5 kHz, 5 seconds.](examples/double-sweep.48k.wav) |
+| [Double frequency sweep, 0 to 5 kHz, 5 seconds.](examples/double-sweep.48k.wav?raw=true) |
 
-| [Double frequency sweep, 0 to 15 kHz, 5 seconds.](examples/fm.double-sweep.48k.png) |
+| ![Double frequency sweep, 0 to 15 kHz, 5 seconds.](examples/fm.double-sweep.48k.png) |
 |:--:|
-| [Double frequency sweep, 0 to 15 kHz, 5 seconds.](examples/fm.double-sweep.48k.wav) |
+| [Double frequency sweep, 0 to 15 kHz, 5 seconds.](examples/fm.double-sweep.48k.wav?raw=true) |
 
 ## Author
 
