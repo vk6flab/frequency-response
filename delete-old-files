@@ -1,0 +1,13 @@
+#!/bin/bash
+
+dir_name="/home/pi/audio"
+
+if [ ! -d "${dir_name}" ]
+then
+	echo "Error: ${dir_name} not found, aborting."
+	exit 1
+fi
+
+find "${dir_name}"/* -mtime +1 -exec rm {} \;
+
+touch "${dir_name}/new_recording"

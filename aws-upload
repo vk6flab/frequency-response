@@ -1,0 +1,24 @@
+#!/bin/bash
+
+dir_name="/home/pi/audio"
+
+# This S3 bucket should be configured as a web site
+s3_bucket=${s3_bucket:-s3://my.bucket.name}
+
+if [ ! -d "${dir_name}" ]
+then
+	echo "Error: ${dir_name} not found, aborting."
+	exit 1
+fi
+
+if [ ! -f "${dir_name}/upload_now" ]
+then
+	# Nothing to to
+	exit
+fi
+
+cd "${dir_name}"
+
+aws s3 sync . "${s3_bucket}"  --exclude="*.wav" --exclude="upload_now" --exclude="new_recording" --quiet --delete
+
+rm "${dir_name}/upload_now"

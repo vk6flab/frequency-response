@@ -1,0 +1,68 @@
+#!/bin/bash
+
+dir_name="/home/pi/audio"
+
+if [ ! -d "${dir_name}" ]
+then
+	echo "Error: ${dir_name} not found, aborting."
+	exit 1
+fi
+
+if [ ! -f "${dir_name}/new_recording" ]
+then
+	# Nothing to do
+	exit
+fi
+
+cd "${dir_name}"
+
+cat <<-EOF > index.html
+<html>
+<head>
+	<title>Online frequency-response by VK6FLAB</title>
+	<style>
+		img {
+			float:left;
+			margin:1px;
+		}
+	</style>
+</head>
+<body>
+	<h1>Frequency Response</h1>
+	This project displays the frequency response of the signal path between
+	your radio and mine by recording the received audio and generating a
+	spectrogram.
+	<p>
+	Files are uploaded to this site every five minutes and files older than
+	24 hours are deleted daily.
+	<p>
+	This project is based on my open source
+	<a target=_blank href="https://github.com/vk6flab/frequency-response/">frequency-response</a>
+	project. If you want to compare your signal against a known signal, you
+	can find example spectrograms and audio files on the project page which
+	also has code examples on how to generate your own audio samples. To
+	test, audio files can be played directly into your microphone, or
+	downloaded and played through a digital audio interface.
+	<p>
+	&copy; 2022 - Onno VK6FLAB
+	<hr>
+EOF
+
+# Find all the images, but exclude the ones relating to an empty audio file.
+find . -type f -name '*.png' -size +4277c -printf '%Ts\t%p\n' | sort -nr | cut -f2 | sed 's|\(.*\)|<a target=_blank href="\1"><img loading="lazy" src="\1" width="472px" height="306px" /></a>|g' >> index.html
+
+cat <<-EOF >> index.html
+</body>
+</html>
+EOF
+
+if [ ! -f "404.html" ]
+then
+	cat <<-EOF > 404.html
+	<html><head><title>404 Not Found</title><style>div{width:270px;height:150px;position:absolute;left:50%;top:50%;margin:-75px 0 0 -135px;text-align:center;}</style><body><div>You step in the stream,<br />but the water has moved on.<br />This page is not here.</div></body></html>
+	EOF
+fi
+
+rm "${dir_name}/new_recording"
+touch "${dir_name}/upload_now"
+

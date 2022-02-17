@@ -18,5 +18,6 @@ do
 		title=$(date -r "${this_file}" "+Spectrogram of transmission ending on %Y-%m-%d at %H:%M:%S UTC")
 		credit="Credits: SoX, VK6FLAB"
 		sox "${this_file}" -n spectrogram -t "${title}" -c "${credit}" -o "${output_dir}/${output_file}.png"
+		touch "${output_dir}/new_recording"
 	fi
 done

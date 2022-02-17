@@ -1,0 +1,5 @@
+@reboot sleep 60 ; /home/pi/bin/record-audio
+@daily /home/pi/bin/delete-old-files
+* * * * * /home/pi/bin/make-spectrograms
+*/5 * * * * /home/pi/bin/make-index
+1-59/5 * * * * /home/pi/bin/aws-upload
